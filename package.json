@@ -1,0 +1,43 @@
+{
+  "name": "matrix-client",
+  "version": "1.0.0",
+  "author": "francamatheus165 <francamatheus165@gmail.com>",
+  "description": "Browser Block Game Emulator with Toggleable Matrix Mods",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build-all": "electron-builder --win --linux",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "io.matrix.client",
+    "productName": "Matrix Client",
+    "win": {
+      "target": "nsis",
+      "icon": "src/assets/icon.png"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "src/assets/icon.png",
+      "category": "public.app-category.games"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "icon": "src/assets/icon.png"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "francamatheus165-prog",
+      "repo": "matrx-client"
+    }
+  },
+  "dependencies": {
+    "discord-rpc": "^4.0.1",
+    "electron-updater": "^6.8.9"
+  },
+  "devDependencies": {
+    "electron": "^43.1.1",
+    "electron-builder": "^26.15.3"
+  }
+}
