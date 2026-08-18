@@ -21,3 +21,26 @@ git clone https://github.com/francamatheus165-prog/matrx-client.git
 cd matrx-client
 npm install
 npm start
+```
+
+## 🔨 Development
+
+```bash
+# Start dev server
+npm start
+
+# Build for Windows
+npm run build
+
+# Build for all platforms
+npm run build-all
+```
+
+## 📋 Requirements
+
+- Node.js 20+
+- npm or yarn
+
+## 📄 License
+
+MIT
