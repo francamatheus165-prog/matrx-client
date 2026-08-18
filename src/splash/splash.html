@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+    body {
+        width: 420px; height: 240px;
+        background: #181818;
+        border: 1px solid #353535;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        overflow: hidden;
+        -webkit-app-region: drag;
+    }
+    .title {
+        font-size: 24px; font-weight: 700;
+        color: #e6f1ff; letter-spacing: 1px;
+    }
+    .bar-wrap {
+        width: 200px; height: 3px;
+        background: #242424; border-radius: 2px;
+        overflow: hidden;
+    }
+    .bar-fill {
+        height: 100%; width: 0%;
+        background: #517fe6;
+        border-radius: 2px;
+        transition: width 0.25s ease;
+    }
+    #splash-status {
+        font-size: 11px; color: #555;
+    }
+    .version {
+        position: absolute;
+        bottom: 14px; right: 16px;
+        font-size: 10px; color: #555;
+    }
+</style>
+</head>
+<body>
+    <div class="title">Matrix Client</div>
+    <div class="bar-wrap">
+        <div class="bar-fill" id="splash-bar"></div>
+    </div>
+    <div id="splash-status">Starting...</div>
+    <div class="version">v1.0.0</div>
+    <script>
+        const { ipcRenderer } = require("electron");
+        ipcRenderer.on("splash-status", (_, msg) => {
+            document.getElementById("splash-status").textContent = msg;
+        });
+        ipcRenderer.on("splash-progress", (_, pct) => {
+            document.getElementById("splash-bar").style.width = pct + "%";
+        });
+    </script>
+</body>
+</html>
